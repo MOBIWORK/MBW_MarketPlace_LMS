@@ -108,7 +108,7 @@ const sidebarLinks = ref(getSidebarLinks())
 const showPageModal = ref(false)
 const isModerator = ref(false)
 const pageToEdit = ref(null)
-const showWebPages = ref(false)
+const showWebPages = ref(true)
 
 onMounted(() => {
 	socket.on('publish_lms_notifications', (data) => {
