@@ -447,7 +447,6 @@ def get_sidebar_settings():
 			page.to = page.route
 
 		sidebar_items.web_pages = web_pages
-
 	return sidebar_items
 
 

@@ -417,7 +417,7 @@ export function getTimezones() {
 export function getSidebarLinks() {
 	return [
 		{
-			label: 'Courses',
+			label: __("Courses"),
 			icon: 'BookOpen',
 			to: 'Courses',
 			activeFor: [
@@ -429,25 +429,25 @@ export function getSidebarLinks() {
 			],
 		},
 		{
-			label: 'Batches',
+			label: __("Batches"),
 			icon: 'Users',
 			to: 'Batches',
 			activeFor: ['Batches', 'BatchDetail', 'Batch', 'BatchForm'],
 		},
 		{
-			label: 'Certified Participants',
+			label: __("Certified Participants"),
 			icon: 'GraduationCap',
 			to: 'CertifiedParticipants',
 			activeFor: ['CertifiedParticipants'],
 		},
 		{
-			label: 'Jobs',
+			label: __("Jobs"),
 			icon: 'Briefcase',
 			to: 'Jobs',
 			activeFor: ['Jobs', 'JobDetail'],
 		},
 		{
-			label: 'Statistics',
+			label: __("Statistics"),
 			icon: 'TrendingUp',
 			to: 'Statistics',
 			activeFor: ['Statistics'],
