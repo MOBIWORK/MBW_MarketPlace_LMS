@@ -428,30 +428,30 @@ export function getSidebarLinks() {
 				'LessonForm',
 			],
 		},
-		{
-			label: "Lớp học",
-			icon: 'Users',
-			to: 'Batches',
-			activeFor: ['Batches', 'BatchDetail', 'Batch', 'BatchForm'],
-		},
-		{
+		// {
+		// 	label: "Lớp học",
+		// 	icon: 'Users',
+		// 	to: 'Batches',
+		// 	activeFor: ['Batches', 'BatchDetail', 'Batch', 'BatchForm'],
+		// },
+		/* {
 			label: "Danh sách chứng nhận",
 			icon: 'GraduationCap',
 			to: 'CertifiedParticipants',
 			activeFor: ['CertifiedParticipants'],
-		},
+		}, */
 		{
-			label: "Công việc",
+			label: "Tuyển dụng",
 			icon: 'Briefcase',
 			to: 'Jobs',
 			activeFor: ['Jobs', 'JobDetail'],
 		},
-		{
+		/* {
 			label: "Thống kê",
 			icon: 'TrendingUp',
 			to: 'Statistics',
 			activeFor: ['Statistics'],
-		},
+		}, */
 	]
 }
 

@@ -64,7 +64,7 @@
 		</div>
 		<SidebarLink
 			:link="{
-				label: isSidebarCollapsed ? 'Expand' : 'Collapse',
+				label: isSidebarCollapsed ? 'Mở' : 'Đóng',
 			}"
 			:isCollapsed="isSidebarCollapsed"
 			@click="isSidebarCollapsed = !isSidebarCollapsed"
@@ -158,7 +158,7 @@ const unreadNotifications = createResource({
 const addNotifications = () => {
 	if (user) {
 		sidebarLinks.value.push({
-			label: 'Notifications',
+			label: 'Thông báo',
 			icon: 'Bell',
 			to: 'Notifications',
 			activeFor: ['Notifications'],
