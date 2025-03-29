@@ -1,4 +1,8 @@
 import { createResource } from 'frappe-ui'
+import { defaultLanguage } from './composables/language'
+import { ref } from 'vue'
+
+export const transformLanguage = ref(false)
 
 export default function translationPlugin(app) {
 	app.config.globalProperties.__ = translate
@@ -6,35 +10,45 @@ export default function translationPlugin(app) {
 	if (!window.translatedMessages) fetchTranslations()
 }
 
-function translate(message) {
+function format(message, replace) {
+	return message.replace(/{(\d+)}/g, function (match, number) {
+		return typeof replace[number] != 'undefined' ? replace[number] : match
+	})
+}
+
+function translate(message, replace, context = null) {
 	let translatedMessages = window.translatedMessages || {}
-	let translatedMessage = translatedMessages[message] || message
+	let translatedMessage = ''
+
+	if (context) {
+		let key = `${message}:${context}`
+		if (translatedMessages[key]) {
+			translatedMessage = translatedMessages[key]
+		}
+	}
+
+	if (!translatedMessage) {
+		translatedMessage = translatedMessages[message] || message
+	}
 
 	const hasPlaceholders = /{\d+}/.test(message)
 	if (!hasPlaceholders) {
 		return translatedMessage
 	}
-	return {
-		format: function (...args) {
-			return translatedMessage.replace(
-				/{(\d+)}/g,
-				function (match, number) {
-					return typeof args[number] != 'undefined'
-						? args[number]
-						: match
-				}
-			)
-		},
-	}
+
+	return format(translatedMessage, replace)
 }
 
 function fetchTranslations(lang) {
+	let language = lang || defaultLanguage.value || 'vi'
 	createResource({
 		url: 'lms.lms.api.get_translations',
-		cache: 'translations',
+		params: { lang: language },
+		cache: language + '_translations',
 		auto: true,
 		transform: (data) => {
 			window.translatedMessages = data
+			transformLanguage.value = !transformLanguage.value
 		},
 	})
 }

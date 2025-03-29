@@ -7,8 +7,8 @@
 					isCollapsed
 						? 'px-0 w-auto'
 						: open
-						? 'bg-surface-white shadow-sm px-2 w-52'
-						: 'hover:bg-surface-gray-3 px-2 w-52'
+							? 'bg-surface-white shadow-sm px-2 w-52'
+							: 'hover:bg-surface-gray-3 px-2 w-52'
 				"
 			>
 				<img
@@ -74,6 +74,8 @@ import { markRaw, watch, ref, onMounted, computed } from 'vue'
 import { createDialog } from '@/utils/dialogs'
 import SettingsModal from '@/components/Modals/Settings.vue'
 import FrappeCloudIcon from '@/components/Icons/FrappeCloudIcon.vue'
+import { showLanguage } from '@/composables/language'
+import { transformLanguage } from '@/translation'
 import {
 	ChevronDown,
 	LogIn,
@@ -102,6 +104,8 @@ const props = defineProps({
 	},
 })
 
+const userDropdownOptions = ref([])
+
 onMounted(() => {
 	theme.value = localStorage.getItem('theme') || 'light'
 	if (['light', 'dark'].includes(theme.value)) {
@@ -109,28 +113,14 @@ onMounted(() => {
 	}
 })
 
-watch(
-	() => settingsStore.isSettingsOpen,
-	(value) => {
-		showSettingsModal.value = value
-	}
-)
-
-const toggleTheme = () => {
-	const currentTheme = document.documentElement.getAttribute('data-theme')
-	theme.value = currentTheme === 'dark' ? 'light' : 'dark'
-	document.documentElement.setAttribute('data-theme', theme.value)
-	localStorage.setItem('theme', theme.value)
-}
-
-const userDropdownOptions = computed(() => {
-	return [
+const setUserDropdown = () => {
+	userDropdownOptions.value = [
 		{
 			group: '',
 			items: [
 				{
 					icon: User,
-					label: 'My Profile',
+					label: __('My Profile'),
 					onClick: () => {
 						router.push(`/user/${userResource.data?.username}`)
 					},
@@ -140,16 +130,23 @@ const userDropdownOptions = computed(() => {
 				},
 				{
 					icon: theme.value === 'light' ? Moon : Sun,
-					label: 'Toggle Theme',
+					label: __('Toggle Theme'),
 					onClick: () => {
 						toggleTheme()
+					},
+				},
+				{
+					icon: 'globe',
+					label: __('Language'),
+					onClick: () => {
+						showLanguage.value = true
 					},
 				},
 				{
 					component: markRaw(Apps),
 					condition: () => {
 						let cookies = new URLSearchParams(
-							document.cookie.split('; ').join('&')
+							document.cookie.split('; ').join('&'),
 						)
 						let system_user = cookies.get('system_user')
 						if (system_user === 'yes') return true
@@ -158,7 +155,7 @@ const userDropdownOptions = computed(() => {
 				},
 				{
 					icon: Settings,
-					label: 'Settings',
+					label: __('Settings'),
 					onClick: () => {
 						settingsStore.isSettingsOpen = true
 					},
@@ -168,12 +165,12 @@ const userDropdownOptions = computed(() => {
 				},
 				{
 					icon: FrappeCloudIcon,
-					label: 'Login to Frappe Cloud',
+					label: __('Login to Frappe Cloud'),
 					onClick: () => {
 						$dialog({
 							title: __('Login to Frappe Cloud?'),
 							message: __(
-								'Are you sure you want to login to your Frappe Cloud dashboard?'
+								'Are you sure you want to login to your Frappe Cloud dashboard?',
 							),
 							actions: [
 								{
@@ -201,14 +198,14 @@ const userDropdownOptions = computed(() => {
 			items: [
 				{
 					icon: Zap,
-					label: 'Powered by Learning',
+					label: __('Powered by Learning'),
 					onClick: () => {
 						window.open('https://frappe.io/learning', '_blank')
 					},
 				},
 				{
 					icon: LogOut,
-					label: 'Log out',
+					label: __('Log out'),
 					onClick: () => {
 						logout.submit().then(() => {
 							isLoggedIn = false
@@ -220,7 +217,7 @@ const userDropdownOptions = computed(() => {
 				},
 				{
 					icon: LogIn,
-					label: 'Log in',
+					label: __('Log in'),
 					onClick: () => {
 						window.location.href = '/login'
 					},
@@ -231,7 +228,142 @@ const userDropdownOptions = computed(() => {
 			],
 		},
 	]
+}
+
+watch(transformLanguage, (value) => {
+	setUserDropdown()
 })
+
+watch(
+	() => settingsStore.isSettingsOpen,
+	(value) => {
+		showSettingsModal.value = value
+	},
+)
+
+const toggleTheme = () => {
+	const currentTheme = document.documentElement.getAttribute('data-theme')
+	theme.value = currentTheme === 'dark' ? 'light' : 'dark'
+	document.documentElement.setAttribute('data-theme', theme.value)
+	localStorage.setItem('theme', theme.value)
+}
+
+// const userDropdownOptions = computed(() => {
+// 	return [
+// 		{
+// 			group: '',
+// 			items: [
+// 				{
+// 					icon: User,
+// 					label: __('My Profile'),
+// 					onClick: () => {
+// 						router.push(`/user/${userResource.data?.username}`)
+// 					},
+// 					condition: () => {
+// 						return isLoggedIn
+// 					},
+// 				},
+// 				{
+// 					icon: theme.value === 'light' ? Moon : Sun,
+// 					label: __('Toggle Theme'),
+// 					onClick: () => {
+// 						toggleTheme()
+// 					},
+// 				},
+// 				{
+// 					icon: 'globe',
+// 					label: __('Language'),
+// 					onClick: () => {
+// 						showLanguage.value = true
+// 					},
+// 				},
+// 				{
+// 					component: markRaw(Apps),
+// 					condition: () => {
+// 						let cookies = new URLSearchParams(
+// 							document.cookie.split('; ').join('&'),
+// 						)
+// 						let system_user = cookies.get('system_user')
+// 						if (system_user === 'yes') return true
+// 						else return false
+// 					},
+// 				},
+// 				{
+// 					icon: Settings,
+// 					label: __('Settings'),
+// 					onClick: () => {
+// 						settingsStore.isSettingsOpen = true
+// 					},
+// 					condition: () => {
+// 						return userResource.data?.is_moderator
+// 					},
+// 				},
+// 				{
+// 					icon: FrappeCloudIcon,
+// 					label: __('Login to Frappe Cloud'),
+// 					onClick: () => {
+// 						$dialog({
+// 							title: __('Login to Frappe Cloud?'),
+// 							message: __(
+// 								'Are you sure you want to login to your Frappe Cloud dashboard?',
+// 							),
+// 							actions: [
+// 								{
+// 									label: __('Confirm'),
+// 									variant: 'solid',
+// 									onClick(close) {
+// 										loginToFrappeCloud()
+// 										close()
+// 									},
+// 								},
+// 							],
+// 						})
+// 					},
+// 					condition: () => {
+// 						return (
+// 							userResource.data?.is_system_manager &&
+// 							userResource.data?.is_fc_site
+// 						)
+// 					},
+// 				},
+// 			],
+// 		},
+// 		{
+// 			group: '',
+// 			items: [
+// 				{
+// 					icon: Zap,
+// 					label: __('Powered by Learning'),
+// 					onClick: () => {
+// 						window.open('https://frappe.io/learning', '_blank')
+// 					},
+// 				},
+// 				{
+// 					icon: LogOut,
+// 					label: __('Log out'),
+// 					onClick: () => {
+// 						logout.submit().then(() => {
+// 							isLoggedIn = false
+// 						})
+// 					},
+// 					condition: () => {
+// 						return isLoggedIn
+// 					},
+// 				},
+// 				{
+// 					icon: LogIn,
+// 					label: __('Log in'),
+// 					onClick: () => {
+// 						window.location.href = '/login'
+// 					},
+// 					condition: () => {
+// 						return !isLoggedIn
+// 					},
+// 				},
+// 			],
+// 		},
+// 	]
+// })
 
 const loginToFrappeCloud = () => {
 	let redirect_to = '/dashboard/sites/' + userResource.data.sitename

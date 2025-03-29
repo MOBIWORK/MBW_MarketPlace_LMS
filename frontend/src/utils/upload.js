@@ -59,12 +59,12 @@ export class Upload {
 			this.wrapper.innerHTML = `<iframe src="${
 				window.location.origin
 			}${encodeURI(
-				file.file_url
+				file.file_url,
 			)}" width='100%' height='700px' class="mb-4" type="application/pdf"></iframe>`
 			return
 		} else {
 			this.wrapper.innerHTML = `<img class="mb-4" src=${encodeURI(
-				file.file_url
+				file.file_url,
 			)} width='100%'>`
 			return
 		}

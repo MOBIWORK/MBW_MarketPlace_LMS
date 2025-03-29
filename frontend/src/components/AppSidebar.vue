@@ -135,9 +135,11 @@
 		v-model:reloadSidebar="sidebarSettings"
 		:page="pageToEdit"
 	/>
+	<ChangeLanguage />
 </template>
 
 <script setup>
+import ChangeLanguage from '@/components/Settings/ChangeLanguage.vue'
 import UserDropdown from '@/components/UserDropdown.vue'
 import CollapseSidebar from '@/components/Icons/CollapseSidebar.vue'
 import SidebarLink from '@/components/SidebarLink.vue'
@@ -214,12 +216,12 @@ const setSidebarLinks = () => {
 				Object.keys(data).forEach((key) => {
 					if (!parseInt(data[key])) {
 						sidebarLinks.value = sidebarLinks.value.filter(
-							(link) => link.label.toLowerCase().split(' ').join('_') !== key
+							(link) => link.label.toLowerCase().split(' ').join('_') !== key,
 						)
 					}
 				})
 			},
-		}
+		},
 	)
 }
 
@@ -302,7 +304,7 @@ const addPrograms = () => {
 		settingsStore.learningPaths.data
 	) {
 		sidebarLinks.value = sidebarLinks.value.filter(
-			(link) => link.label !== 'Courses'
+			(link) => link.label !== 'Courses',
 		)
 		activeFor.push('CourseDetail')
 		activeFor.push('Lesson')
@@ -341,7 +343,7 @@ const deletePage = (link) => {
 			onSuccess() {
 				sidebarSettings.reload()
 			},
-		}
+		},
 	)
 }
 
@@ -353,7 +355,7 @@ const toggleSidebar = () => {
 	sidebarStore.isSidebarCollapsed = !sidebarStore.isSidebarCollapsed
 	localStorage.setItem(
 		'isSidebarCollapsed',
-		JSON.stringify(sidebarStore.isSidebarCollapsed)
+		JSON.stringify(sidebarStore.isSidebarCollapsed),
 	)
 }
 
@@ -361,7 +363,7 @@ const toggleWebPages = () => {
 	sidebarStore.isWebpagesCollapsed = !sidebarStore.isWebpagesCollapsed
 	localStorage.setItem(
 		'isWebpagesCollapsed',
-		JSON.stringify(sidebarStore.isWebpagesCollapsed)
+		JSON.stringify(sidebarStore.isWebpagesCollapsed),
 	)
 }
 

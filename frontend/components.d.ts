@@ -30,6 +30,7 @@ declare module 'vue' {
     BulkCertificates: typeof import('./src/components/Modals/BulkCertificates.vue')['default']
     Categories: typeof import('./src/components/Categories.vue')['default']
     CertificationLinks: typeof import('./src/components/CertificationLinks.vue')['default']
+    ChangeLanguage: typeof import('./src/components/Settings/ChangeLanguage.vue')['default']
     ChapterModal: typeof import('./src/components/Modals/ChapterModal.vue')['default']
     CodeEditor: typeof import('./src/components/Controls/CodeEditor.vue')['default']
     CollapseSidebar: typeof import('./src/components/Icons/CollapseSidebar.vue')['default']
