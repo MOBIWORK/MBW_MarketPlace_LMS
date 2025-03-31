@@ -39,7 +39,8 @@ export default defineConfig({
 			'showdown',
 			'engine.io-client',
 			'tailwind.config.js',
-			'highlight.js',
+			// 'highlight.js',
+			'lowlight',
 		],
 	},
 })

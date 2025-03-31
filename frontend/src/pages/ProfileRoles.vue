@@ -90,7 +90,7 @@ const changeRole = (role) => {
 		},
 		{
 			onSuccess(data) {
-				showToast('Success', 'Role updated successfully', 'check')
+				showToast(__('Success'), __('Role updated successfully'), 'check')
 			},
 		}
 	)

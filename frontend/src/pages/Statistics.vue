@@ -159,7 +159,7 @@ const dayjs = inject('$dayjs')
 const breadcrumbs = computed(() => {
 	return [
 		{
-			label: 'Statistics',
+			label: __('Statistics'),
 			route: {
 				name: 'Statistics',
 			},
@@ -208,7 +208,7 @@ const courseCompletion = createResource({
 
 const signupChartOptions = () => {
 	let options = chartOptions(false)
-	options.plugins.title.text = 'Signups'
+	options.plugins.title.text = __('Signups')
 	options.borderColor = '#4563f0'
 	options.backgroundColor = (ctx) => {
 		const canvas = ctx.chart.ctx
@@ -224,7 +224,7 @@ const signupChartOptions = () => {
 
 const enrollmentChartOptions = () => {
 	let options = chartOptions(false)
-	options.plugins.title.text = 'Enrollments'
+	options.plugins.title.text = __('Enrollments')
 	options.borderColor = '#4563f0'
 	options.backgroundColor = (ctx) => {
 		const canvas = ctx.chart.ctx
@@ -240,7 +240,7 @@ const enrollmentChartOptions = () => {
 
 const lessonChartOptions = () => {
 	let options = chartOptions(false)
-	options.plugins.title.text = 'Milestones'
+	options.plugins.title.text = __('Milestones')
 	options.borderColor = '#4563f0'
 	options.backgroundColor = (ctx) => {
 		const canvas = ctx.chart.ctx
@@ -256,7 +256,7 @@ const lessonChartOptions = () => {
 
 const courseChartOptions = () => {
 	let options = chartOptions(true)
-	options.plugins.title.text = 'Completions'
+	options.plugins.title.text = __('Completions')
 	options.backgroundColor = ['#4563f0', '#f683ae']
 	return options
 }

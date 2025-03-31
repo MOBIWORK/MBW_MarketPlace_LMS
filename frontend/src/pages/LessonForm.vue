@@ -18,7 +18,7 @@
 					<div class="w-5/6 mx-auto">
 						<FormControl
 							v-model="lesson.title"
-							label="Title"
+							:label="__('Title')"
 							class="mb-4"
 							:required="true"
 						/>
@@ -456,7 +456,7 @@ const showToast = (title, text, icon) => {
 const breadcrumbs = computed(() => {
 	let crumbs = [
 		{
-			label: 'Courses',
+			label: __('Courses'),
 			route: { name: 'Courses' },
 		},
 		{
@@ -479,7 +479,7 @@ const breadcrumbs = computed(() => {
 		})
 	}
 	crumbs.push({
-		label: lessonDetails?.data?.lesson ? 'Edit Lesson' : 'Create Lesson',
+		label: lessonDetails?.data?.lesson ? __('Edit Lesson') : __('Create Lesson'),
 		route: {
 			name: 'LessonForm',
 			params: {
@@ -494,7 +494,7 @@ const breadcrumbs = computed(() => {
 
 const pageMeta = computed(() => {
 	return {
-		title: 'Lesson Editor',
+		title: __('Lesson Editor'),
 		description: 'Create and edit lessons for your course',
 	}
 })

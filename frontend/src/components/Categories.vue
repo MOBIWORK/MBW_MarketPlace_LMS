@@ -2,7 +2,7 @@
 	<div class="flex flex-col min-h-0">
 		<div class="flex items-center justify-between">
 			<div class="text-xl font-semibold mb-5 text-ink-gray-9">
-				{{ label }}
+				{{ __(label) }}
 			</div>
 			<Button @click="() => showCategoryForm()">
 				<template #icon>

@@ -557,7 +557,7 @@ const check_permission = () => {
 const breadcrumbs = computed(() => {
 	let crumbs = [
 		{
-			label: 'Courses',
+			label: __('Courses'),
 			route: { name: 'Courses' },
 		},
 	]
@@ -576,7 +576,7 @@ const breadcrumbs = computed(() => {
 
 const pageMeta = computed(() => {
 	return {
-		title: 'Create a Course',
+		title: __('Create a Course'),
 		description: 'Create or edit a course for your learning system.',
 	}
 })

@@ -16,7 +16,7 @@
 	>
 		<template #body-content>
 			<div class="space-y-4 text-base">
-				<FormControl label="Title" v-model="chapter.title" :required="true" />
+				<FormControl :label="__('Title')" v-model="chapter.title" :required="true" />
 				<Switch
 					size="sm"
 					:label="__('SCORM Package')"
@@ -38,7 +38,7 @@
 							<div class="mb-4">
 								<Button @click="openFileSelector" :loading="uploading">
 									{{
-										uploading ? `Uploading ${progress}%` : 'Upload an zip file'
+										uploading ? `Uploading ${progress}%` : __('Upload an zip file')
 									}}
 								</Button>
 							</div>

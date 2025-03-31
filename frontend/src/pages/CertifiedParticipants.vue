@@ -165,7 +165,7 @@ const breadcrumbs = computed(() => [
 
 const pageMeta = computed(() => {
 	return {
-		title: 'Certified Participants',
+		title: __('Certified Participants'),
 		description: 'All participants that have been certified.',
 	}
 })

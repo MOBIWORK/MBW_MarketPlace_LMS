@@ -194,7 +194,7 @@ const enrollMember = (program, course) => {
 			}
 		})
 		.catch((err) => {
-			showToast('Error', err.messages?.[0] || err, 'x')
+			showToast(__('Error'), err.messages?.[0] || err, 'x')
 		})
 }
 

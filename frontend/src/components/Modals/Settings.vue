@@ -122,28 +122,28 @@ const tabsStructure = computed(() => {
 							label: 'Enable Learning Paths',
 							name: 'enable_learning_paths',
 							description:
-								'This will enforce students to go through programs assigned to them in the correct order.',
+								__('This will enforce students to go through programs assigned to them in the correct order.'),
 							type: 'checkbox',
 						},
 						{
 							label: 'Allow Guest Access',
 							name: 'allow_guest_access',
 							description:
-								'If enabled, users can access the course and batch lists without logging in.',
+								__('If enabled, users can access the course and batch lists without logging in.'),
 							type: 'checkbox',
 						},
 						{
 							label: 'Send calendar invite for evaluations',
 							name: 'send_calendar_invite_for_evaluations',
 							description:
-								'If enabled, it sends google calendar invite to the student for evaluations.',
+								__('If enabled, it sends google calendar invite to the student for evaluations.'),
 							type: 'checkbox',
 						},
 						{
 							label: 'Unsplash Access Key',
 							name: 'unsplash_access_key',
 							description:
-								'Optional. If this is set, students can pick a cover image from the unsplash library for their profile page. https://unsplash.com/documentation#getting-started.',
+								__('Optional. If this is set, students can pick a cover image from the unsplash library for their profile page. https://unsplash.com/documentation#getting-started.'),
 							type: 'password',
 						},
 					],
@@ -155,35 +155,35 @@ const tabsStructure = computed(() => {
 			hideLabel: true,
 			items: [
 				{
-					label: 'Payment Gateway',
+					label: __('Payment Gateway'),
 					icon: 'DollarSign',
 					description:
-						'Configure the payment gateway and other payment related settings',
+						__('Configure the payment gateway and other payment related settings'),
 					fields: [
 						{
-							label: 'Payment Gateway',
+							label: __('Payment Gateway'),
 							name: 'payment_gateway',
 							type: 'Link',
 							doctype: 'Payment Gateway',
 						},
 						{
-							label: 'Default Currency',
+							label: __('Default Currency'),
 							name: 'default_currency',
 							type: 'Link',
 							doctype: 'Currency',
 						},
 						{
-							label: 'Apply GST for India',
+							label: __('Apply GST for India'),
 							name: 'apply_gst',
 							type: 'checkbox',
 						},
 						{
-							label: 'Show USD equivalent amount',
+							label: __('Show USD equivalent amount'),
 							name: 'show_usd_equivalent',
 							type: 'checkbox',
 						},
 						{
-							label: 'Apply rounding on equivalent',
+							label: __('Apply rounding on equivalent'),
 							name: 'apply_rounding',
 							type: 'checkbox',
 						},
@@ -192,7 +192,7 @@ const tabsStructure = computed(() => {
 			],
 		},
 		{
-			label: 'Lists',
+			label: __('Lists'),
 			hideLabel: false,
 			items: [
 				{
@@ -213,15 +213,15 @@ const tabsStructure = computed(() => {
 			],
 		},
 		{
-			label: 'Customise',
+			label: __('Customise'),
 			hideLabel: false,
 			items: [
 				{
-					label: 'Branding',
+					label: __('Branding'),
 					icon: 'Blocks',
 					fields: [
 						{
-							label: 'Brand Name',
+							label: __('Brand Name'),
 							name: 'app_name',
 							type: 'text',
 						},
@@ -241,7 +241,7 @@ const tabsStructure = computed(() => {
 							type: 'Upload',
 						},
 						{
-							label: 'Address',
+							label: __('Address'),
 							name: 'address',
 							type: 'textarea',
 							rows: 2,
@@ -262,7 +262,7 @@ const tabsStructure = computed(() => {
 				{
 					label: 'Sidebar',
 					icon: 'PanelLeftIcon',
-					description: 'Choose the items you want to show in the sidebar',
+					description: __('Choose the items you want to show in the sidebar'),
 					fields: [
 						{
 							label: 'Courses',
@@ -339,7 +339,7 @@ const tabsStructure = computed(() => {
 							name: 'user_category',
 							type: 'checkbox',
 							description:
-								'Enable this option to ask users to select their occupation during the signup process.',
+								__('Enable this option to ask users to select their occupation during the signup process.'),
 						},
 					],
 				},

@@ -58,7 +58,7 @@
 			<div class="leading-5">
 				{{
 					__(
-						'You have not created any assignments yet. To create a new assignment, click on the "New" button above.'
+						'You have not created any assignments yet. To create a new assignment, click on the New button above.'
 					)
 				}}
 			</div>

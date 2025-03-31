@@ -63,7 +63,7 @@
 		<div class="leading-5">
 			{{
 				__(
-					'You have not created any quizzes yet. To create a new quiz, click on the "New Quiz" button above.'
+					'You have not created any quizzes yet. To create a new quiz, click on the New Quiz button above.'
 				)
 			}}
 		</div>

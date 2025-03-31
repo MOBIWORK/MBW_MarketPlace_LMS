@@ -305,7 +305,7 @@ const breadcrumbs = computed(() => [
 
 const pageMeta = computed(() => {
 	return {
-		title: 'Courses',
+		title: __('Courses'),
 		description: 'All published courses.',
 	}
 })

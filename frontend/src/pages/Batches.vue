@@ -306,7 +306,7 @@ const breadcrumbs = computed(() => [
 
 const pageMeta = computed(() => {
 	return {
-		title: 'Batches',
+		title: __('Batches'),
 		description: 'All upcoming batches.',
 	}
 })

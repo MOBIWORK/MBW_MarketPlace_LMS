@@ -13,7 +13,7 @@
 			</Button>
 			<TabButtons
 				class="inline-block"
-				:buttons="[{ label: 'Unread', active: true }, { label: 'Read' }]"
+				:buttons="[{ label: __('Unread'), active: true, value: 'Unread' }, { label: __('Read'), value: 'Read' }]"
 				v-model="activeTab"
 			/>
 		</div>
@@ -136,7 +136,7 @@ const markAllAsRead = createResource({
 const breadcrumbs = computed(() => {
 	let crumbs = [
 		{
-			label: 'Notifications',
+			label: __('Notifications'),
 			route: {
 				name: 'Notifications',
 			},
@@ -147,8 +147,8 @@ const breadcrumbs = computed(() => {
 
 const pageMeta = computed(() => {
 	return {
-		title: 'Notifications',
-		description: 'All your notifications in one place.',
+		title: __('Notifications'),
+		description: __('All your notifications in one place.'),
 	}
 })
 
